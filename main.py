@@ -1,17 +1,21 @@
-nach = int(input("начало"))
-kon = int(input("конец"))
-chag = int(input("введита шаг"))
-if nach > kon:
-    nach, kon = kon, nach
+boys = int(input('Введите кол-во мальчиков: '))
+girls = int(input('Введите кол-во девочек: '))
+answer = ''
+if (boys > 2 * girls) or (girls > 2 * boys):
+    print('Нет решения.')
+elif boys >= girls:
+    k = boys - girls
+    for bgb in range(k):
+        answer += 'BGB'
+    for bg in range(girls - k):
+        answer += 'BG'
 else:
-    pass
-if chag > 0:
-    chag = -chag
-else:
-    pass
-for x in range(kon, nach-1, chag):
-    y = (x ** 3) + 2 * (x ** 2) - (4 * x) + 1
-    print(f"в точке {x}, функция равна {y}")
+    k = girls - boys
+    for gbg in range(k):
+        answer += 'GBG'
+    for gb in range(boys - k):
+        answer += 'GB'
+print(answer)
 
 
 
